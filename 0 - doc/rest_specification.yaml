@@ -1,0 +1,108 @@
+#%RAML 0.8
+title: DB-Design_Aufgabe1
+version: "1.0.0"
+baseUri: "https://my.ip.com:8080"
+
+schemas: 
+    - 
+        simpleProductObj: '{
+                              "type":"object",
+                              "$schema":"http://json-schema.org/draft-03/schema#",
+                              "properties":
+                                {
+                                  "id":
+                                    {
+                                      "type":"integer",
+                                      "required":true,
+                                    },
+                                  "name":
+                                    {
+                                      "type":"string",
+                                      "required":true,
+                                    },
+                                  "price":
+                                    {
+                                      "type":"number",
+                                      "required":true
+                                    }
+                                }
+                            }'
+    - 
+        productList: '{
+                        "type":"object",
+                        "$schema":"http://json-schema.org/draft-03/schema#",
+                        "properties":
+                            {
+                              "artikel":
+                                {
+                                  "type":"array",
+                                  "required":false,
+                                  "title":"artikel",
+                                  "items":
+                                      {"type":
+                                        "object",
+                                        "$ref":"#/schemas/simpleProductObj"
+                                      }
+                                }
+                            }
+                      }'
+    - 
+        product: '{
+                    "type":"object",
+                    "$schema":"http://json-schema.org/draft-03/schema#",
+                    "properties":
+                      {
+                        "id":
+                          {
+                            "type":"integer",
+                            "required":true
+                          },
+                        "name":
+                          {
+                            "type":"string",
+                            "required":true,
+                            "title":"name"
+                          },
+                        "img":
+                          {
+                            "type":"string",
+                            "required":true,
+                          },
+                        "description":
+                          {
+                            "type":"string",
+                            "required":true,
+                          },
+                        "stock":
+                          {
+                            "type":"integer",
+                            "required":true,
+                          }
+                      }
+                  }'
+
+/: 
+    get: 
+        displayName: get_all_products
+        responses: 
+            "200": 
+                description: Json product-numbers
+                body: 
+                    application/json: 
+                        schema: productList
+                        example: '{"artikel":[{"id":4231,"name":"Bett-schwarz","prize":17000}]}'
+/product: 
+    get: 
+        displayName: get productObject by number
+        queryParameters: 
+            number: 
+                type: string
+                required: true
+                repeat: false
+                example: /product?number=123456
+        responses: 
+            "200": 
+                body: 
+                    application/json: 
+                        schema: product
+                        example: '{"id":123,"name":"Bett-schwarz","img":"http://bla/bett","description":"Das ist ein Bett.","stock":7}'
