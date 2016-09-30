@@ -1,0 +1,11 @@
+# This property file is needed to configure how to access the oracle database via JDBC.
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@ora14.informatik.haw-hamburg.de:1521:inf14
+    username:
+    password:
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle10gDialect
