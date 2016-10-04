@@ -24,6 +24,7 @@ import java.util.List;
 import de.haw.hamburg.productcomponent.businesslogiclayer.ProductComponentBusinessLogic;
 import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,11 +49,19 @@ public class ProductController {
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public List<ArtikelDTO> getAllProducts() {
         List<ArtikelDTO> artikelDTOs = null;
         artikelDTOs = productComponentBusinessLogic.getAllArtikel(artikelRepository);
 
         return artikelDTOs;
+    }
+
+    @RequestMapping(value = "/product/{artikelNumber}", method = RequestMethod.GET, produces = "application/json")
+    public ArtikelDTO getArtikelByArtikelnumber(@PathVariable long artikelNumber) {
+        ArtikelDTO artikelDTO = null;
+        artikelDTO = artikelRepository.findByArtikelID(artikelNumber).convertToArtikelDTO();
+
+        return artikelDTO;
     }
 }
