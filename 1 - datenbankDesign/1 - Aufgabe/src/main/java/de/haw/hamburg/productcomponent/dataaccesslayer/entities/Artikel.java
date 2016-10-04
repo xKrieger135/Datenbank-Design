@@ -19,16 +19,13 @@ package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
 import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Description...
  *
  * @author Patrick Steinhauer
+ * @Table This is the name of the database table.
  */
 @Entity
 @Table(name = "Artikel")

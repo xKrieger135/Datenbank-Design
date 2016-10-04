@@ -28,10 +28,7 @@ import java.util.List;
 /**
  * Description...
  *
- * @author $(USER)
- * @company Werum IT Solutions GmbH
- * @created $(DATE)
- * @since PAS-X V3.2.1
+ * @author Patrick Steinhauer
  */
 @Component
 public class ProductComponentBusinessLogic {
