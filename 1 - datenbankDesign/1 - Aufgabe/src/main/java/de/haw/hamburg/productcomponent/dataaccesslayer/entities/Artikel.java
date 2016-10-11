@@ -1,25 +1,10 @@
-/*
- * This file is part of a Werum IT Solutions GmbH project.
- *
- * Copyright (c)
- *    Werum IT Solutions GmbH
- *    All rights reserved.
- *
- * This source file may be managed in different Java package structures,
- * depending on actual usage of the source file by the Copyright holders:
- *
- * for Werum:  com.werum.* or any other Werum owned Internet domain
- *
- * Any use of this file as part of a software system by none Copyright holders
- * is subject to license terms.
- *
- * Last Change: $Id: $$
- */
 package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
-import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 
 /**
  * Description...
@@ -125,23 +110,31 @@ public class Artikel {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Artikel)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Artikel))
+            return false;
 
         Artikel artikel = (Artikel) o;
 
-        if (getArtikelID() != artikel.getArtikelID()) return false;
-        if (getTyp() != artikel.getTyp()) return false;
-        if (getBestand() != artikel.getBestand()) return false;
-        if (Float.compare(artikel.getPreis(), getPreis()) != 0) return false;
-        if (!getArtikelName().equals(artikel.getArtikelName())) return false;
+        if (getArtikelID() != artikel.getArtikelID())
+            return false;
+        if (getTyp() != artikel.getTyp())
+            return false;
+        if (getBestand() != artikel.getBestand())
+            return false;
+        if (Float.compare(artikel.getPreis(), getPreis()) != 0)
+            return false;
+        if (!getArtikelName().equals(artikel.getArtikelName()))
+            return false;
         if (getBaugruppe() != null ? !getBaugruppe().equals(artikel.getBaugruppe()) : artikel.getBaugruppe() != null)
             return false;
         if (getKategorie() != null ? !getKategorie().equals(artikel.getKategorie()) : artikel.getKategorie() != null)
             return false;
         if (getBildURL() != null ? !getBildURL().equals(artikel.getBildURL()) : artikel.getBildURL() != null)
             return false;
-        return getBeschreibung() != null ? getBeschreibung().equals(artikel.getBeschreibung()) : artikel.getBeschreibung() == null;
+        return getBeschreibung() != null ? getBeschreibung().equals(artikel.getBeschreibung())
+                : artikel.getBeschreibung() == null;
 
     }
 
@@ -161,16 +154,8 @@ public class Artikel {
 
     @Override
     public String toString() {
-        return "Artikel{" +
-                "artikelID=" + artikelID +
-                ", artikelName='" + artikelName + '\'' +
-                ", typ=" + typ +
-                ", bestand=" + bestand +
-                ", preis=" + preis +
-                ", baugruppe='" + baugruppe + '\'' +
-                ", kategorie='" + kategorie + '\'' +
-                ", bildURL='" + bildURL + '\'' +
-                ", beschreibung='" + beschreibung + '\'' +
-                '}';
+        return "Artikel{" + "artikelID=" + artikelID + ", artikelName='" + artikelName + '\'' + ", typ=" + typ
+                + ", bestand=" + bestand + ", preis=" + preis + ", baugruppe='" + baugruppe + '\'' + ", kategorie='"
+                + kategorie + '\'' + ", bildURL='" + bildURL + '\'' + ", beschreibung='" + beschreibung + '\'' + '}';
     }
 }

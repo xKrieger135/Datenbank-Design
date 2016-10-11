@@ -1,20 +1,3 @@
-/*
- * This file is part of a Werum IT Solutions GmbH project.
- *
- * Copyright (c)
- *    Werum IT Solutions GmbH
- *    All rights reserved.
- *
- * This source file may be managed in different Java package structures,
- * depending on actual usage of the source file by the Copyright holders:
- *
- * for Werum:  com.werum.* or any other Werum owned Internet domain
- *
- * Any use of this file as part of a software system by none Copyright holders
- * is subject to license terms.
- *
- * Last Change: $Id: $$
- */
 package de.haw.hamburg.productcomponent.dataaccesslayer.dtos;
 
 import de.haw.hamburg.productcomponent.dataaccesslayer.entities.Artikel;
@@ -41,7 +24,8 @@ public class ArtikelDTO {
 
     }
 
-    public ArtikelDTO(String artikelName, int typ, int bestand, float preis, String baugruppe, String kategorie, String bildURL, String beschreibung) {
+    public ArtikelDTO(String artikelName, int typ, int bestand, float preis, String baugruppe, String kategorie,
+            String bildURL, String beschreibung) {
         this.artikelName = artikelName;
         this.typ = typ;
         this.bestand = bestand;
@@ -99,21 +83,29 @@ public class ArtikelDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ArtikelDTO)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof ArtikelDTO))
+            return false;
 
         ArtikelDTO that = (ArtikelDTO) o;
 
-        if (getTyp() != that.getTyp()) return false;
-        if (getBestand() != that.getBestand()) return false;
-        if (Float.compare(that.getPreis(), getPreis()) != 0) return false;
-        if (!getArtikelName().equals(that.getArtikelName())) return false;
+        if (getTyp() != that.getTyp())
+            return false;
+        if (getBestand() != that.getBestand())
+            return false;
+        if (Float.compare(that.getPreis(), getPreis()) != 0)
+            return false;
+        if (!getArtikelName().equals(that.getArtikelName()))
+            return false;
         if (getBaugruppe() != null ? !getBaugruppe().equals(that.getBaugruppe()) : that.getBaugruppe() != null)
             return false;
         if (getKategorie() != null ? !getKategorie().equals(that.getKategorie()) : that.getKategorie() != null)
             return false;
-        if (getBildURL() != null ? !getBildURL().equals(that.getBildURL()) : that.getBildURL() != null) return false;
-        return getBeschreibung() != null ? getBeschreibung().equals(that.getBeschreibung()) : that.getBeschreibung() == null;
+        if (getBildURL() != null ? !getBildURL().equals(that.getBildURL()) : that.getBildURL() != null)
+            return false;
+        return getBeschreibung() != null ? getBeschreibung().equals(that.getBeschreibung())
+                : that.getBeschreibung() == null;
 
     }
 
@@ -132,15 +124,8 @@ public class ArtikelDTO {
 
     @Override
     public String toString() {
-        return "ArtikelDTO{" +
-                "artikelName='" + artikelName + '\'' +
-                ", typ=" + typ +
-                ", bestand=" + bestand +
-                ", preis=" + preis +
-                ", baugruppe='" + baugruppe + '\'' +
-                ", kategorie='" + kategorie + '\'' +
-                ", bildURL='" + bildURL + '\'' +
-                ", beschreibung='" + beschreibung + '\'' +
-                '}';
+        return "ArtikelDTO{" + "artikelName='" + artikelName + '\'' + ", typ=" + typ + ", bestand=" + bestand
+                + ", preis=" + preis + ", baugruppe='" + baugruppe + '\'' + ", kategorie='" + kategorie + '\''
+                + ", bildURL='" + bildURL + '\'' + ", beschreibung='" + beschreibung + '\'' + '}';
     }
 }

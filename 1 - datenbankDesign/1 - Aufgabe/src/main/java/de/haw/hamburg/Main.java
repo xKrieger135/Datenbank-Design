@@ -1,17 +1,16 @@
 package de.haw.hamburg;
 
-import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.ArtikelRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
+import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.ArtikelRepository;
+
 /**
  * This is the main entry point to start the application.
  *
  * @author Patrick Steinhauer
- *
- *
  */
 @SpringBootApplication
 @ComponentScan("de.haw.hamburg")
