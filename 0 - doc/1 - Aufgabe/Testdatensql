@@ -1,0 +1,41 @@
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES('Mr', 'Wurst', 'aaaa', '123', 'HH', 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Kaese, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Schinken, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mrs, Brot, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mrs, Spinat, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Kakao, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Butter, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mrs, Pfeffer, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Salz, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Bratwurst, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Oregano, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mr, Ketchup, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mrs, Mayo, aaaa, 123, HH, 22213);
+           
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+           VALUES(Mrs, Fleisch, aaaa, 123, HH, 22213);           

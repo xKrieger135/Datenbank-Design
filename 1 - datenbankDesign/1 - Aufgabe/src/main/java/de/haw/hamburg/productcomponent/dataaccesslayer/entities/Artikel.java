@@ -32,7 +32,7 @@ import javax.persistence.*;
 public class Artikel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long artikelNummer;
     private long artikelID;
     private String artikelName;
     private int typ;

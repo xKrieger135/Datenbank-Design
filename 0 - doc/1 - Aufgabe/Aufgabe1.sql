@@ -33,7 +33,6 @@ CREATE TABLE Artikel (
   Typ               INT DEFAULT 0 NOT NULL,
   Bestand           NUMBER(10) DEFAULT 0 NOT NULL,
   Preis             FLOAT NOT NULL,
-  Baugruppe         VARCHAR2(255),
   Kategorie         VARCHAR2(255),
   BildURL           VARCHAR2(255),
   Beschreibung      VARCHAR2(255)
@@ -42,10 +41,11 @@ CREATE TABLE Artikel (
 CREATE TABLE Unterartikel (
   Artikelnummer     NUMBER NOT NULL,   
   Artikelkomponente NUMBER NOT NULL,
+  Menge				NUMBER NOT NULL,
 
   FOREIGN KEY(Artikelnummer) REFERENCES Artikel(Artikelnummer),
   FOREIGN KEY(Artikelkomponente) REFERENCES Artikel(Artikelnummer),
-  CONSTRAINT unterartikelContraint UNIQUE (Artikelnummer,Artikelkomponente) 
+  CONSTRAINT unterartikelContraint PRIMARY KEY (Artikelnummer,Artikelkomponente) 
 );
 
 CREATE TABLE Bestellposition (
@@ -55,13 +55,13 @@ CREATE TABLE Bestellposition (
   
   FOREIGN KEY(Artikelnummer) REFERENCES Artikel(Artikelnummer),
   FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer),
-  CONSTRAINT bestellpositionConstraint UNIQUE (Artikelnummer,Bestellnummer) 
+  CONSTRAINT bestellpositionConstraint PRIMARY KEY (Artikelnummer,Bestellnummer) 
 );
 
 
-CREATE TABLE Auftrag (
+CREATE TABLE ProduktionsAuftrag (
   Auftragsnummer    NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  Datum             DATE NOT NULL,
+  Monat             VARCHAR(6) NOT NULL,
   Bestellnummer     NUMBER NOT NULL,
   
   FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer)
