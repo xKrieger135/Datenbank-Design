@@ -14,7 +14,6 @@ public class ArtikelDTO {
     private int typ;
     private int bestand;
     private float preis;
-    private String baugruppe;
     private String kategorie;
     private String bildURL;
     private String beschreibung;
@@ -23,13 +22,12 @@ public class ArtikelDTO {
 
     }
 
-    public ArtikelDTO(String artikelName, int typ, int bestand, float preis, String baugruppe, String kategorie,
+    public ArtikelDTO(String artikelName, int typ, int bestand, float preis, String kategorie,
                       String bildURL, String beschreibung) {
         this.artikelName = artikelName;
         this.typ = typ;
         this.bestand = bestand;
         this.preis = preis;
-        this.baugruppe = baugruppe;
         this.kategorie = kategorie;
         this.bildURL = bildURL;
         this.beschreibung = beschreibung;
@@ -40,7 +38,6 @@ public class ArtikelDTO {
         artikel.setArtikelName(artikelName);
         artikel.setBeschreibung(beschreibung);
         artikel.setTyp(typ);
-        artikel.setBaugruppe(baugruppe);
         artikel.setPreis(preis);
         artikel.setBestand(bestand);
         artikel.setBildURL(bildURL);
@@ -62,10 +59,6 @@ public class ArtikelDTO {
 
     public float getPreis() {
         return preis;
-    }
-
-    public String getBaugruppe() {
-        return baugruppe;
     }
 
     public String getKategorie() {
@@ -97,8 +90,6 @@ public class ArtikelDTO {
             return false;
         if (!getArtikelName().equals(that.getArtikelName()))
             return false;
-        if (getBaugruppe() != null ? !getBaugruppe().equals(that.getBaugruppe()) : that.getBaugruppe() != null)
-            return false;
         if (getKategorie() != null ? !getKategorie().equals(that.getKategorie()) : that.getKategorie() != null)
             return false;
         if (getBildURL() != null ? !getBildURL().equals(that.getBildURL()) : that.getBildURL() != null)
@@ -114,7 +105,6 @@ public class ArtikelDTO {
         result = 31 * result + getTyp();
         result = 31 * result + getBestand();
         result = 31 * result + (getPreis() != +0.0f ? Float.floatToIntBits(getPreis()) : 0);
-        result = 31 * result + (getBaugruppe() != null ? getBaugruppe().hashCode() : 0);
         result = 31 * result + (getKategorie() != null ? getKategorie().hashCode() : 0);
         result = 31 * result + (getBildURL() != null ? getBildURL().hashCode() : 0);
         result = 31 * result + (getBeschreibung() != null ? getBeschreibung().hashCode() : 0);
@@ -124,7 +114,7 @@ public class ArtikelDTO {
     @Override
     public String toString() {
         return "ArtikelDTO{" + "artikelName='" + artikelName + '\'' + ", typ=" + typ + ", bestand=" + bestand
-                + ", preis=" + preis + ", baugruppe='" + baugruppe + '\'' + ", kategorie='" + kategorie + '\''
+                + ", preis=" + preis + '\'' + ", kategorie='" + kategorie + '\''
                 + ", bildURL='" + bildURL + '\'' + ", beschreibung='" + beschreibung + '\'' + '}';
     }
 }

@@ -23,7 +23,6 @@ public class Artikel {
     private int typ;
     private int bestand;
     private float preis;
-    private String baugruppe;
     private String kategorie;
     private String bildURL;
     private String beschreibung;
@@ -72,14 +71,6 @@ public class Artikel {
         this.preis = preis;
     }
 
-    public String getBaugruppe() {
-        return baugruppe;
-    }
-
-    public void setBaugruppe(String baugruppe) {
-        this.baugruppe = baugruppe;
-    }
-
     public String getKategorie() {
         return kategorie;
     }
@@ -105,7 +96,7 @@ public class Artikel {
     }
 
     public ArtikelDTO convertToArtikelDTO() {
-        return new ArtikelDTO(artikelName, typ, bestand, preis, baugruppe, kategorie, bildURL, beschreibung);
+        return new ArtikelDTO(artikelName, typ, bestand, preis, kategorie, bildURL, beschreibung);
     }
 
     @Override
@@ -127,8 +118,6 @@ public class Artikel {
             return false;
         if (!getArtikelName().equals(artikel.getArtikelName()))
             return false;
-        if (getBaugruppe() != null ? !getBaugruppe().equals(artikel.getBaugruppe()) : artikel.getBaugruppe() != null)
-            return false;
         if (getKategorie() != null ? !getKategorie().equals(artikel.getKategorie()) : artikel.getKategorie() != null)
             return false;
         if (getBildURL() != null ? !getBildURL().equals(artikel.getBildURL()) : artikel.getBildURL() != null)
@@ -145,7 +134,6 @@ public class Artikel {
         result = 31 * result + getTyp();
         result = 31 * result + getBestand();
         result = 31 * result + (getPreis() != +0.0f ? Float.floatToIntBits(getPreis()) : 0);
-        result = 31 * result + (getBaugruppe() != null ? getBaugruppe().hashCode() : 0);
         result = 31 * result + (getKategorie() != null ? getKategorie().hashCode() : 0);
         result = 31 * result + (getBildURL() != null ? getBildURL().hashCode() : 0);
         result = 31 * result + (getBeschreibung() != null ? getBeschreibung().hashCode() : 0);
@@ -155,7 +143,7 @@ public class Artikel {
     @Override
     public String toString() {
         return "Artikel{" + "artikelID=" + artikelID + ", artikelName='" + artikelName + '\'' + ", typ=" + typ
-                + ", bestand=" + bestand + ", preis=" + preis + ", baugruppe='" + baugruppe + '\'' + ", kategorie='"
+                + ", bestand=" + bestand + ", preis=" + preis + ", baugruppe='" + ", kategorie='"
                 + kategorie + '\'' + ", bildURL='" + bildURL + '\'' + ", beschreibung='" + beschreibung + '\'' + '}';
     }
 }
