@@ -1,13 +1,12 @@
 package de.haw.hamburg.productcomponent.businesslogiclayer;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Component;
-
 import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 import de.haw.hamburg.productcomponent.dataaccesslayer.entities.Artikel;
 import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.ArtikelRepository;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Description...

@@ -1,10 +1,10 @@
 package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
+import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 
 /**
  * Description...

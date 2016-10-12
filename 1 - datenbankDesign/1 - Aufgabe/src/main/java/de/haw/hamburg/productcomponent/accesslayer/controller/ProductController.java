@@ -1,16 +1,15 @@
 package de.haw.hamburg.productcomponent.accesslayer.controller;
 
-import java.util.List;
-
+import de.haw.hamburg.productcomponent.businesslogiclayer.ProductComponentBusinessLogic;
+import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
+import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.ArtikelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.haw.hamburg.productcomponent.businesslogiclayer.ProductComponentBusinessLogic;
-import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
-import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.ArtikelRepository;
+import java.util.List;
 
 /**
  * Description...

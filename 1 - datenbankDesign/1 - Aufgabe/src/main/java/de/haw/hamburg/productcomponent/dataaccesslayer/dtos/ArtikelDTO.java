@@ -7,7 +7,6 @@ import de.haw.hamburg.productcomponent.dataaccesslayer.entities.Artikel;
  * violated.
  *
  * @author Patrick Steinhauer
- *
  */
 public class ArtikelDTO {
 
@@ -25,7 +24,7 @@ public class ArtikelDTO {
     }
 
     public ArtikelDTO(String artikelName, int typ, int bestand, float preis, String baugruppe, String kategorie,
-            String bildURL, String beschreibung) {
+                      String bildURL, String beschreibung) {
         this.artikelName = artikelName;
         this.typ = typ;
         this.bestand = bestand;
