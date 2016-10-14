@@ -1,3 +1,4 @@
+package de.haw.hamburg.productcomponent.accesslayer.view;
 
 /**
  *

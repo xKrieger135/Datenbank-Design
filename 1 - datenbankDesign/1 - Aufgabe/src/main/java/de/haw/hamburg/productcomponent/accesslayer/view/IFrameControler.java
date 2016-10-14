@@ -1,4 +1,4 @@
-
+package de.haw.hamburg.productcomponent.accesslayer.view;
 /**
  *
  * @author dima

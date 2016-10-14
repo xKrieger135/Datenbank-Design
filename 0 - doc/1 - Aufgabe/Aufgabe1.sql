@@ -28,7 +28,6 @@ CREATE TABLE Bestellung (
 
 CREATE TABLE Artikel (
   Artikelnummer     NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  ArtikelID         NUMBER NOT NULL,
   ArtikelName       VARCHAR2(255) NOT NULL,
   Typ               INT DEFAULT 0 NOT NULL,
   Bestand           NUMBER(10) DEFAULT 0 NOT NULL,
