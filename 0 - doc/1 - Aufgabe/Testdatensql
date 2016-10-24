@@ -42,3 +42,6 @@ VALUES('Anna', 'Christiansen', 'CPU-Kernel-Weg', '1', 'HH', 22213);
 
 INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
 VALUES('Darius', 'Docker', 'Oracle Datenbanken Weg', '1', 'HH', 22213);
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+VALUES('Hans', 'Java', 'Dockerland', '123', 'HH', 42342342);
