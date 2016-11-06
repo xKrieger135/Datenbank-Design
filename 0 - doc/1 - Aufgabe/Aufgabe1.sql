@@ -51,6 +51,7 @@ CREATE TABLE Unterartikel (
 CREATE TABLE Bestellposition (
   Bestellnummer     NUMBER NOT NULL,
   Artikelnummer     NUMBER NOT NULL,
+  Menge             NUMBER NOT NULL,
   
   FOREIGN KEY(Artikelnummer) REFERENCES Artikel(Artikelnummer),
   FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer),
