@@ -66,7 +66,7 @@ CREATE TABLE ProduktionsAuftrag (
   FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer)
 );
 
-CREATE TABLE LIFERANT (
+CREATE TABLE LIEFERANT (
   Liferantennummer NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   Liferantenname   VARCHAR2(255) NOT NULL,
   Strasse          VARCHAR2(255) NOT NULL,
