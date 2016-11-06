@@ -45,3 +45,15 @@ VALUES('Darius', 'Docker', 'Oracle Datenbanken Weg', '1', 'HH', 22213);
 
 INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
 VALUES('Hans', 'Java', 'Dockerland', '123', 'HH', 42342342);
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Saturn', 'Am Sande', '10', 'Lüneburg', 21337, 'steht hier leider nicht wegen git', '55454564646845asd');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Media Markt', 'Auf der Huette', '22', 'Dahlenburg', 21368, 'ebenfalls keine angabe', '466587915468ADHHA');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Expert', 'Wilhelmshavener Straße', '77', 'Hamburg', 22334, 'fragen sie später noch einmal', '6549873211472258369');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('EP', 'An der Kuhweide', '10', 'Sandhausen', 23454, 'leider nicht vorhanden', '357159684426368148');
