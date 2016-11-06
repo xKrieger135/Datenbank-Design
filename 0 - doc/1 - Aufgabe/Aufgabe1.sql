@@ -12,7 +12,8 @@ CREATE TABLE Kunde (
   Adresse         VARCHAR2(255) NOT NULL,
   Hausnummer      VARCHAR2(255) NOT NULL,
   Stadt           VARCHAR2(255) NOT NULL,
-  PLZ             INT NOT NULL
+  PLZ             INT NOT NULL,
+  Email           VARCHAR2(255) NOT NULL
 );
 
 CREATE TABLE Bestellung (
@@ -63,4 +64,12 @@ CREATE TABLE ProduktionsAuftrag (
   Bestellnummer     NUMBER NOT NULL,
   
   FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer)
+);
+
+CREATE TABLE LIFERANT (
+  Liferantennummer NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Liferantenname   VARCHAR2(255) NOT NULL,
+  Anschrift        VARCHAR2(255) NOT NULL,
+  Email            VARCHAR2(255) NOT NULL,
+  IBAN             VARCHAR2(255) NOT NULL
 );
