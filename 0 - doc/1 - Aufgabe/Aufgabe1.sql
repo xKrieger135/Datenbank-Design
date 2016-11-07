@@ -14,6 +14,7 @@ CREATE TABLE Kunde (
   Hausnummer      VARCHAR2(255) NOT NULL,
   Stadt           VARCHAR2(255) NOT NULL,
   PLZ             INT NOT NULL,
+  IBAN            VARCHAR2(255) NOT NULL,
   Email           VARCHAR2(255) NOT NULL
 );
 
