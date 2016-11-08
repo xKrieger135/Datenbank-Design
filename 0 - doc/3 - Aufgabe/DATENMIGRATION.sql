@@ -1,6 +1,7 @@
 -- CREATE GESCHAEFTSPARTNERTMP TABLE to add all relevant information also the 
 -- primary keys from KUNDE and LIEFERANT
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 CREATE TABLE GESCHAEFTSPARTNERTMP(
     Geschaeftspartnernummer   NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Kundennummer              NUMBER        NOT NULL,
@@ -46,8 +47,9 @@ CREATE TABLE LIEFERANT AS
 
 -- Create the correct GESCHAEFTSPARTNER Table with correct data
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DROP TABLE GESCHAEFTSPARTNER;
 CREATE TABLE GESCHAEFTSPARTNER AS
-(SELECT   GESCHAEFTSPARTNERNUMMER, STRASSE, NUMMER, PLZ, IBAN, EMAIL
+(SELECT   GESCHAEFTSPARTNERNUMMER, STRASSE, NUMMER, ORT ,PLZ, IBAN, EMAIL
  FROM     GESCHAEFTSPARTNERTMP
 );
 
@@ -55,6 +57,8 @@ ALTER TABLE GESCHAEFTSPARTNER
 ADD CONSTRAINT GESCHAEFTSPARTNER_PK PRIMARY KEY (GESCHAEFTSPARTNERNUMMER);
 
 DROP TABLE GESCHAEFTSPARTNERTMP CASCADE CONSTRAINTS;
+DROP TABLE LIEFERANTTMP CASCADE CONSTRAINTS;
+DROP TABLE KUNDETMP CASCADE CONSTRAINTS;
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 

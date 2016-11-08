@@ -19,7 +19,7 @@ BEGIN
   
   
   FOR artObj IN (SELECT * FROM UNTERARTIKEL u WHERE u.ARTIKELNUMMER = artikelID) LOOP
-    art_menge := LEAST( art_menge , getUnterartikelMenge(artObj.ARTIKELKOMPONENTE, (artObj.MENGE)) / menge);
+    art_menge := LEAST( art_menge , (getUnterartikelMenge(artObj.ARTIKELKOMPONENTE, (artObj.MENGE)) / (menge * artObj.MENGE)) );
   END LOOP;
   
   return CEIL(art_menge);

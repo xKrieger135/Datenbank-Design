@@ -6,7 +6,7 @@
 --------------------------------------------------------
 set define off;
 
-  CREATE OR REPLACE EDITIONABLE PROCEDURE "ABQ295"."RECURSIVESQL" (
+  CREATE OR REPLACE PROCEDURE RECURSIVESQL (
                                      OA OUT UNTERARTIKEL.ARTIKELNUMMER%TYPE,
                                      UA OUT UNTERARTIKEL.ARTIKELKOMPONENTE%TYPE,
                                      NA OUT ARTIKEL.ARTIKELNAME%TYPE) AS

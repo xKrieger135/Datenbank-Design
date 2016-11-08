@@ -24,7 +24,7 @@ BEGIN
 
   
   for artObj in (SELECT * FROM UNTERARTIKEL u WHERE u.ARTIKELNUMMER = artikelID) LOOP
-    res := LEAST( res , getUnterartikelMenge(artObj.ARTIKELKOMPONENTE, 1));
+    res := LEAST( res , getUnterartikelMenge(artObj.ARTIKELKOMPONENTE, artObj.MENGE));
   END LOOP;
   
   RETURN res;
