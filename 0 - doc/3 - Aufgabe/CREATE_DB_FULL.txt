@@ -1,0 +1,304 @@
+DROP TABLE Bestellposition CASCADE CONSTRAINTS;
+DROP TABLE Unterartikel CASCADE CONSTRAINTS;
+DROP TABLE Produktionsauftrag CASCADE CONSTRAINTS;
+DROP TABLE Artikel CASCADE CONSTRAINTS;
+DROP TABLE Kunde CASCADE CONSTRAINTS;
+DROP TABLE Bestellung CASCADE CONSTRAINTS;
+DROP TABLE LIEFERANT CASCADE CONSTRAINTS;
+
+CREATE TABLE Kunde (
+  Kundennummer    NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Vorname         VARCHAR2(255) NOT NULL,
+  Nachname        VARCHAR2(255) NOT NULL,
+  Adresse         VARCHAR2(255) NOT NULL,
+  Hausnummer      VARCHAR2(255) NOT NULL,
+  Stadt           VARCHAR2(255) NOT NULL,
+  PLZ             INT NOT NULL,
+  IBAN            VARCHAR2(255) NOT NULL,
+  Email           VARCHAR2(255) NOT NULL
+);
+
+CREATE TABLE Bestellung (
+  Bestellnummer     NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Kundennummer      NUMBER NOT NULL,
+  Datum             DATE NOT NULL,
+  Preis             FLOAT NOT NULL,
+  Rechnungsadresse  VARCHAR2(255),
+  Lieferadresse     VARCHAR2(255) NOT NULL,
+
+  FOREIGN KEY(Kundennummer) REFERENCES Kunde(Kundennummer)
+);
+
+CREATE TABLE Artikel (
+  Artikelnummer     NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  ArtikelName       VARCHAR2(255) NOT NULL,
+  Typ               INT DEFAULT 0 NOT NULL,
+  Bestand           NUMBER(10) DEFAULT 0 NOT NULL,
+  Preis             FLOAT NOT NULL,
+  Kategorie         VARCHAR2(255),
+  BildURL           VARCHAR2(255),
+  Beschreibung      VARCHAR2(255)
+);
+
+CREATE TABLE Unterartikel (
+  Artikelnummer     NUMBER NOT NULL,   
+  Artikelkomponente NUMBER NOT NULL,
+  Menge				NUMBER NOT NULL,
+
+  FOREIGN KEY(Artikelnummer) REFERENCES Artikel(Artikelnummer),
+  FOREIGN KEY(Artikelkomponente) REFERENCES Artikel(Artikelnummer),
+  CONSTRAINT unterartikelContraint PRIMARY KEY (Artikelnummer,Artikelkomponente) 
+);
+
+CREATE TABLE Bestellposition (
+  Bestellnummer     NUMBER NOT NULL,
+  Artikelnummer     NUMBER NOT NULL,
+  Menge             NUMBER NOT NULL,
+  
+  FOREIGN KEY(Artikelnummer) REFERENCES Artikel(Artikelnummer),
+  FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer),
+  CONSTRAINT bestellpositionConstraint PRIMARY KEY (Artikelnummer,Bestellnummer) 
+);
+
+
+CREATE TABLE ProduktionsAuftrag (
+  Auftragsnummer    NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Monat             VARCHAR(6) NOT NULL,
+  Bestellnummer     NUMBER NOT NULL,
+  
+  FOREIGN KEY(Bestellnummer) REFERENCES Bestellung(Bestellnummer)
+);
+
+CREATE TABLE LIEFERANT (
+  Lieferantennummer NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  Lieferantenname   VARCHAR2(255) NOT NULL,
+  Strasse          VARCHAR2(255) NOT NULL,
+  Nummer           VARCHAR(255)  NOT NULL,
+  Ort              VARCHAR(255)  NOT NULL,
+  PLZ              INT           NOT NULL,
+  Email            VARCHAR2(255) NOT NULL,
+  IBAN             VARCHAR2(255) NOT NULL
+);
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Hans', 'Müller', 'HBF', '1', 'HH', 22213, '654654987987321321159DE', 'a');
+		   
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Jan', 'Meier', 'Karstadt', '1', 'HH', 22213, '65465498798734534677321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Max', 'Meyer', 'Müller', '1', 'HH', 22213, '6546549879873213asasfa21159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Liz', 'Rudolfsen', 'HAW', '1', 'HH', 22213, '6546549879873213ADADADA21159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Sara', 'Lorin', 'Hamburg', '1', 'HH', 22213, '654654987LKJHJ987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Tim', 'Vagrant', 'Pauli', '1', 'HH', 22213, '65465498798732132WASD1159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Lara', 'Delaru', 'HSV', '1', 'HH', 22213, 'DDERT654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Lars', 'Lindrot', 'HSVV', '1', 'HH', 22213, '654OIU654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Leo', 'Lolf', 'UBahn', '1', 'HH', 22213, 'DEDE3654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Lisa', 'Larisson', 'SBahn', '1', 'HH', 22213, 'DEDEDE654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Josie', 'Maren', 'ICE', '1', 'HH', 22213, 'DEDEDE3654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Tina', 'Torina', 'Matadorenstraße', '1', 'HH', 22213, 'DDFFG654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Peter', 'Pan', 'Platinen-allee', '1', 'HH', 22213, 'DDFGFGAS654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Anna', 'Christiansen', 'CPU-Kernel-Weg', '1', 'HH', 22213, 'ASDFEWQ654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Darius', 'Docker', 'Oracle Datenbanken Weg', '1', 'HH', 22213, 'ALSKDJFH654654987987321321159DE', 'a');
+
+INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ, IBAN, EMAIL)
+VALUES('Hans', 'Java', 'Dockerland', '123', 'HH', 42342342, 'QWERTZ654654987987321321159DE', 'a');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Saturn', 'Am Sande', '10', 'Lüneburg', 21337, 'steht hier leider nicht wegen git', '55454564646845asd');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Media Markt', 'Auf der Huette', '22', 'Dahlenburg', 21368, 'ebenfalls keine angabe', '466587915468ADHHA');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('Expert', 'Wilhelmshavener Straße', '77', 'Hamburg', 22334, 'fragen sie später noch einmal', '6549873211472258369');
+
+INSERT INTO LIEFERANT(Lieferantenname, Strasse, Nummer, Ort, PLZ, Email, IBAN)
+VALUES('EP', 'An der Kuhweide', '10', 'Sandhausen', 23454, 'leider nicht vorhanden', '357159684426368148');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Intel-I3', 3, 55555, 50.00, '', '', 'Super');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Intel-I5 567k', 3, 55, 120.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Intel-I5 667k', 3, 44, 125.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Intel-I7 887kk', 3, 34, 333.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Intel-I7 TeraX', 3, 23, 500.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Gehäuse TerraBeast3000', 1, 66, 34.99, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Gehäuse Unicorn5600', 1, 12, 44.09, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Gehäuse Tausendblinkeinheiten', 1, 11, 676.98, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Gehäuse R2D2', 1, 111, 1200.99, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Gehäuse C3PO', 1, 1234, 1299.99, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Mainboard ZZFX0', 2, 1, 124.49, '', '', 'Gutsc');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Mainboard ZZFY3300', 2, 45, 123.67, '', '', 'Gutsfgd');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Mainboard XYZ345', 2, 555, 155.58, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Mainboard ZS4000', 2, 30, 279.88, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('Mainboard Asura678', 2, 45, 450.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('RAM 8GB', 3, 14, 42.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('RAM 4GB', 3, 222, 22.00, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('RAM 16GB', 3, 5555, 86.99, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('RAM 32GB', 3, 55, 127.89, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('RAM 64GB', 3, 100, 189.69, '', '', 'Gut');
+
+INSERT INTO Artikel(ArtikelName, Typ, Bestand, Preis, Kategorie, BildURL, Beschreibung)
+VALUES('TurboRechner', 0, 20, 2000.00, '', '', 'Like a Turbo');
+
+INSERT INTO UNTERARTIKEL(Artikelnummer, Artikelkomponente, Menge)
+VALUES(21, 9, 10);
+
+INSERT INTO UNTERARTIKEL(Artikelnummer, Artikelkomponente, Menge)
+VALUES(9, 15, 10);
+
+INSERT INTO UNTERARTIKEL(Artikelnummer, Artikelkomponente, Menge)
+VALUES(15, 5, 10);
+
+INSERT INTO UNTERARTIKEL(Artikelnummer, Artikelkomponente, Menge)
+VALUES(15, 18, 10);
+
+INSERT INTO Bestellung(Kundennummer, Datum, Preis, Rechnungsadresse, Lieferadresse)
+VALUES(13, TO_DATE('2016/10/18', 'yyyy/mm/dd'), 2000.00, 'Sandhausen 123', 'BoBaBoboBiBa 60');
+
+INSERT INTO BESTELLPOSITION(BESTELLNUMMER, ARTIKELNUMMER, MENGE)
+VALUES(1, 21, 5);
+
+
+-- CREATE GESCHAEFTSPARTNERTMP TABLE to add all relevant information also the 
+-- primary keys from KUNDE and LIEFERANT
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CREATE TABLE GESCHAEFTSPARTNERTMP(
+    Geschaeftspartnernummer   NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Kundennummer              NUMBER        NOT NULL,
+    Strasse                   VARCHAR2(255) NOT NULL,
+    Nummer                    VARCHAR2(255) NOT NULL,
+    Ort                       VARCHAR2(255) NOT NULL,
+    PLZ                       INT           NOT NULL,
+    IBAN                      VARCHAR2(255) NOT NULL,
+    Email                     VARCHAR2(255) NOT NULL
+);
+
+INSERT INTO GESCHAEFTSPARTNERTMP(KUNDENNUMMER, STRASSE, NUMMER, ORT, PLZ, IBAN, EMAIL)
+SELECT   KUNDENNUMMER, ADRESSE, HAUSNUMMER, STADT, PLZ, IBAN, EMAIL
+FROM     KUNDE;
+
+INSERT INTO GESCHAEFTSPARTNERTMP(KUNDENNUMMER, STRASSE, NUMMER, ORT, PLZ, IBAN, EMAIL)
+SELECT   LIEFERANTENNUMMER, STRASSE, NUMMER, ORT, PLZ, IBAN, EMAIL
+FROM     LIEFERANT;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-- RENAME KUNDE and LIEFERANT into TMP tables. After that create the correct
+-- table definitions with data.
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RENAME KUNDE TO KUNDETMP;
+RENAME LIEFERANT TO LIEFERANTTMP;
+
+CREATE TABLE KUNDE AS 
+(SELECT GT.GESCHAEFTSPARTNERNUMMER, KT.KUNDENNUMMER, KT.VORNAME, KT.NACHNAME
+ FROM KUNDETMP              KT,
+      GESCHAEFTSPARTNERTMP  GT
+ WHERE KT.KUNDENNUMMER = GT.KUNDENNUMMER
+);
+
+CREATE TABLE LIEFERANT AS
+(
+ SELECT   GT.GESCHAEFTSPARTNERNUMMER, LT.LIEFERANTENNAME
+ FROM     LIEFERANTTMP LT,
+          GESCHAEFTSPARTNERTMP GT
+ WHERE    LT.LIEFERANTENNUMMER = GT.KUNDENNUMMER
+);
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+-- Create the correct GESCHAEFTSPARTNER Table with correct data
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CREATE TABLE GESCHAEFTSPARTNER AS
+(SELECT   GESCHAEFTSPARTNERNUMMER, STRASSE, NUMMER, PLZ, IBAN, EMAIL
+ FROM     GESCHAEFTSPARTNERTMP
+);
+
+ALTER TABLE GESCHAEFTSPARTNER
+ADD CONSTRAINT GESCHAEFTSPARTNER_PK PRIMARY KEY (GESCHAEFTSPARTNERNUMMER);
+
+DROP TABLE GESCHAEFTSPARTNERTMP CASCADE CONSTRAINTS;
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+-- ADD the Foreignkeys to the specified tables and make sure that they are unique
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ALTER TABLE KUNDE
+ADD CONSTRAINT KUNDE_GP_UNIQUE UNIQUE (GESCHAEFTSPARTNERNUMMER);
+
+ALTER TABLE KUNDE
+ADD CONSTRAINT KUNDE_GP_FK FOREIGN KEY (GESCHAEFTSPARTNERNUMMER) REFERENCES GESCHAEFTSPARTNER (GESCHAEFTSPARTNERNUMMER);
+
+ALTER TABLE LIEFERANT
+ADD CONSTRAINT LIEFERANT_GP_FK FOREIGN KEY (GESCHAEFTSPARTNERNUMMER) REFERENCES GESCHAEFTSPARTNER (GESCHAEFTSPARTNERNUMMER);
+
+ALTER TABLE LIEFERANT
+ADD CONSTRAINT LIEFERANT_GP_UNIQUE UNIQUE (GESCHAEFTSPARTNERNUMMER);
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+DROP TABLE GESCHAEFTSPARTNER CASCADE CONSTRAINTS;
+DROP TABLE KUNDETMP CASCADE CONSTRAINTS;
+DROP TABLE LIEFERANTTMP CASCADE CONSTRAINTS;
+*/
