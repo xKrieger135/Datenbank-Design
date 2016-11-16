@@ -13,4 +13,6 @@
 @'/home/dima/Studium/7_Semester_WiSe2017/Git/Datenbank-Design/0 - doc/3 - Aufgabe/CREATE_PROCEDURE-RECURSIVESQL.sql'
 @'/home/dima/Studium/7_Semester_WiSe2017/Git/Datenbank-Design/0 - doc/3 - Aufgabe/CREATE_TRIGGER-check_bestellposition.sql'
 @'/home/dima/Studium/7_Semester_WiSe2017/Git/Datenbank-Design/0 - doc/3 - Aufgabe/CREATE_TRIGGER-check_lieferant.sql'
+@'/home/dima/Studium/7_Semester_WiSe2017/Git/Datenbank-Design/0 - doc/4 - Aufgabe/CREATE-VIEW.sql'
+@'/home/dima/Studium/7_Semester_WiSe2017/Git/Datenbank-Design/0 - doc/4 - Aufgabe/GET_FULL_PRICE_FROM_GP_BESTELLUNGEN.sql'
 
