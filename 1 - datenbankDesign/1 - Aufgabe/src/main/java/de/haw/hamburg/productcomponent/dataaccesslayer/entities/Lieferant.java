@@ -5,19 +5,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by patri on 11.10.2016.
+ * Created by Patrick Steinhauer
+ * On 17.Nov.2016
  */
 @Entity
-@Table(name = "Kunde")
-public class Kunde extends Geschaeftspartner {
+@Table(name = "Lieferant")
+public class Lieferant extends Geschaeftspartner {
 
     @Id
     private long geschaeftspartnerNummer;
-    private String vorname;
-    private String nachname;
+    private String lieferantenName;
 
-
-    public Kunde() {
+    public Lieferant() {
 
     }
 
@@ -29,19 +28,11 @@ public class Kunde extends Geschaeftspartner {
         this.geschaeftspartnerNummer = geschaeftspartnerNummer;
     }
 
-    public String getVorname() {
-        return vorname;
+    public String getLieferantenName() {
+        return lieferantenName;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
-    }
-
-    public String getNachname() {
-        return nachname;
-    }
-
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setLieferantenName(String lieferantenName) {
+        this.lieferantenName = lieferantenName;
     }
 }
