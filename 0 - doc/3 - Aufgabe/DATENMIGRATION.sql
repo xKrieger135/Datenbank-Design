@@ -29,7 +29,7 @@ RENAME KUNDE TO KUNDETMP;
 RENAME LIEFERANT TO LIEFERANTTMP;
 
 CREATE TABLE KUNDE AS 
-(SELECT GT.GESCHAEFTSPARTNERNUMMER, KT.KUNDENNUMMER, KT.VORNAME, KT.NACHNAME
+(SELECT GT.GESCHAEFTSPARTNERNUMMER, KT.VORNAME, KT.NACHNAME
  FROM KUNDETMP              KT,
       GESCHAEFTSPARTNERTMP  GT
  WHERE KT.KUNDENNUMMER = GT.KUNDENNUMMER
@@ -42,9 +42,8 @@ CREATE TABLE LIEFERANT AS
           GESCHAEFTSPARTNERTMP GT
  WHERE    LT.LIEFERANTENNUMMER = GT.KUNDENNUMMER
 );
+
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 -- Create the correct GESCHAEFTSPARTNER Table with correct data
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 DROP TABLE GESCHAEFTSPARTNER;
@@ -56,10 +55,40 @@ CREATE TABLE GESCHAEFTSPARTNER AS
 ALTER TABLE GESCHAEFTSPARTNER
 ADD CONSTRAINT GESCHAEFTSPARTNER_PK PRIMARY KEY (GESCHAEFTSPARTNERNUMMER);
 
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- CREATE SEQUENCE 
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DROP SEQUENCE geschaeftspartner_seq;
+declare
+ ex     number;
+ countN number;
+begin
+  select MAX(GESCHAEFTSPARTNER.GESCHAEFTSPARTNERNUMMER)  + 1 into ex from GESCHAEFTSPARTNER;
+  execute immediate 'CREATE SEQUENCE geschaeftspartner_seq MINVALUE 0 START WITH '|| ex ||' INCREMENT BY 1 CACHE 20 ORDER';
+end;
+/
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- CREATE TRIGGER FOR AUTOINCREMENT 
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CREATE OR REPLACE TRIGGER autoincrement_gp
+BEFORE INSERT ON GESCHAEFTSPARTNER 
+FOR EACH ROW
+
+BEGIN
+  SELECT geschaeftspartner_seq.NEXTVAL
+  INTO   :NEW.GESCHAEFTSPARTNERNUMMER
+  FROM   dual;
+END;
+/
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- REMOVE GARBAGE
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 DROP TABLE GESCHAEFTSPARTNERTMP CASCADE CONSTRAINTS;
 DROP TABLE LIEFERANTTMP CASCADE CONSTRAINTS;
 DROP TABLE KUNDETMP CASCADE CONSTRAINTS;
--- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 -- ADD the Foreignkeys to the specified tables and make sure that they are unique
