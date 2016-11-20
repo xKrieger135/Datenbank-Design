@@ -1,7 +1,9 @@
 package de.haw.hamburg.productcomponent.accesslayer.view;
 
 
-import de.haw.hamburg.productcomponent.accesslayer.model.*;
+import de.haw.hamburg.productcomponent.accesslayer.model.Geschaeftspartner;
+import de.haw.hamburg.productcomponent.accesslayer.model.Kunde;
+import de.haw.hamburg.productcomponent.accesslayer.model.Lieferant;
 
 /**
  *

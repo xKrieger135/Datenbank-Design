@@ -9,9 +9,9 @@ import org.springframework.data.repository.CrudRepository;
 public interface ArtikelRepository extends CrudRepository<Artikel, Long> {
 
     /**
-     * @param artikelID This is the given ID for which the related article should be found.
+     * @param artikelNummer This is the given ID for which the related article should be found.
      * @return Returns an artikel.
      */
-    Artikel findByArtikelID(long artikelID);
+    Artikel findByArtikelNummer(long artikelNummer);
 
 }

@@ -2,9 +2,7 @@ package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
 import de.haw.hamburg.productcomponent.dataaccesslayer.dtos.ArtikelDTO;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Description...
@@ -17,6 +15,8 @@ import javax.persistence.Table;
 public class Artikel {
 
     @Id
+    @Column(name = "ARTIKELNUMMER")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long artikelNummer;
     private String artikelName;
     private int typ;
@@ -28,6 +28,14 @@ public class Artikel {
 
     public Artikel() {
 
+    }
+
+    public long getArtikelNummer() {
+        return artikelNummer;
+    }
+
+    public void setArtikelNummer(long artikelNummer) {
+        this.artikelNummer = artikelNummer;
     }
 
     public String getArtikelName() {

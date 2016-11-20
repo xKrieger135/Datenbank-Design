@@ -9,9 +9,9 @@ import javax.transaction.Transactional;
  * Created by Patrick Steinhauer
  * On 12.Okt.2016
  */
-@Transactional
-public interface KundenRepository extends GeschaeftspartnerBaseRepository<Kunde> {
+//@Transactional
+public interface KundenRepository { //extends CrudRepository<Kunde, Long> {
 
-    Kunde findByNachname(String nachname);
+    Kunde findByKundenNummer(long kundenNummer);
 
 }

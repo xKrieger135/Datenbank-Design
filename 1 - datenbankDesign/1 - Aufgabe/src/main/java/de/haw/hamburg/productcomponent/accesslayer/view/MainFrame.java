@@ -2,10 +2,10 @@ package de.haw.hamburg.productcomponent.accesslayer.view;
 
 import de.haw.hamburg.productcomponent.accesslayer.model.Geschaeftspartner;
 
-import java.awt.EventQueue;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *

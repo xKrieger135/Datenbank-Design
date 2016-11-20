@@ -1,18 +1,15 @@
 package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by patri on 11.10.2016.
  */
 @Entity
 @Table(name = "Kunde")
-public class Kunde extends Geschaeftspartner {
+public class Kunde {
 
-    @Id
-    private long geschaeftspartnerNummer;
+    private long kundenNummer;
     private String vorname;
     private String nachname;
 
@@ -21,12 +18,12 @@ public class Kunde extends Geschaeftspartner {
 
     }
 
-    public long getGeschaeftspartnerNummer() {
-        return geschaeftspartnerNummer;
+    public long getKundenNummer() {
+        return kundenNummer;
     }
 
-    public void setGeschaeftspartnerNummer(long geschaeftspartnerNummer) {
-        this.geschaeftspartnerNummer = geschaeftspartnerNummer;
+    public void setKundenNummer(long kundenNummer) {
+        this.kundenNummer = kundenNummer;
     }
 
     public String getVorname() {

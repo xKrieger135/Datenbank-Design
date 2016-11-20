@@ -1,6 +1,5 @@
 package de.haw.hamburg.productcomponent.accesslayer.controller;
 
-import de.haw.hamburg.productcomponent.dataaccesslayer.entities.Geschaeftspartner;
 import de.haw.hamburg.productcomponent.dataaccesslayer.entities.Kunde;
 import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.GeschaeftspartnerRepository;
 import de.haw.hamburg.productcomponent.dataaccesslayer.repositories.KundenRepository;
@@ -22,9 +21,9 @@ public class GeschaeftspartnerController {
     @Autowired
     private KundenRepository kundenRepository;
 
-    @RequestMapping(value = "/gp/{nachname}", method = RequestMethod.GET, produces = "application/json")
-    public Kunde findGeschaeftspartnerByNachname(@PathVariable String nachname) {
-        Kunde kunde = kundenRepository.findByNachname(nachname);
+    @RequestMapping(value = "/gp/{kundenNummer}", method = RequestMethod.GET, produces = "application/json")
+    public Kunde findGeschaeftspartnerByKundenNummer(@PathVariable long kundenNummer) {
+        Kunde kunde = kundenRepository.findByKundenNummer(kundenNummer);
         return kunde;
     }
 }

@@ -1,9 +1,6 @@
 package de.haw.hamburg.productcomponent.dataaccesslayer.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Patrick Steinhauer
@@ -11,10 +8,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Geschaeftspartner")
-@Inheritance
+//@DiscriminatorColumn(name = "geschaeftspartnernummer")
+//@Inheritance
 public abstract class Geschaeftspartner {
 
     @Id
+//    @Column(name = "GESCHAEFTSPARTNERNUMMER")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long geschaeftspartnerNummer;
     private String strasse;
     private String nummer;
@@ -26,12 +26,12 @@ public abstract class Geschaeftspartner {
 
     }
 
-    public long getGeschaeftspartnerNummer() {
+    public long getKundenNummer() {
         return geschaeftspartnerNummer;
     }
 
-    public void setGeschaeftspartnerNummer(long geschaeftspartnerNummer) {
-        this.geschaeftspartnerNummer = geschaeftspartnerNummer;
+    public void setKundenNummer(long kundenNummer) {
+        this.geschaeftspartnerNummer = kundenNummer;
     }
 
     public String getStrasse() {
