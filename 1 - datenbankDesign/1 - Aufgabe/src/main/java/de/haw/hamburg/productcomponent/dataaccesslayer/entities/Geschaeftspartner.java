@@ -17,12 +17,22 @@ public class Geschaeftspartner {
     private long geschaeftspartnernummer;
     private String strasse;
     private String nummer;
+    private String ort;
     private int plz;
     private String iban;
     private String email;
 
-    public Geschaeftspartner() {
+    public Geschaeftspartner(long geschaeftspartnernummer, String strasse, String nummer, String ort, int plz, String iban, String email) {
+        this.geschaeftspartnernummer = geschaeftspartnernummer;
+        this.strasse = strasse;
+        this.nummer = nummer;
+        this.ort = ort;
+        this.plz = plz;
+        this.iban = iban;
+        this.email = email;
+    }
 
+    public Geschaeftspartner() {
     }
 
     public long getGeschaeftspartnernummer() {
@@ -37,39 +47,24 @@ public class Geschaeftspartner {
         return strasse;
     }
 
-    public void setStrasse(String strasse) {
-        this.strasse = strasse;
-    }
-
     public String getNummer() {
         return nummer;
     }
 
-    public void setNummer(String nummer) {
-        this.nummer = nummer;
+    public String getOrt() {
+        return ort;
     }
 
     public int getPlz() {
         return plz;
     }
 
-    public void setPlz(int plz) {
-        this.plz = plz;
-    }
-
     public String getIban() {
         return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
     }
 
     public String getemail() {
         return email;
     }
 
-    public void setemail(String email) {
-        this.email = email;
-    }
 }

@@ -20,6 +20,6 @@ public interface IFrameController {
 
     boolean updateGeschaeftspartner(Geschaeftspartner updatedG);
 
-    public void createGeschaeftspartner(Geschaeftspartner g);
+    void createGeschaeftspartner(Geschaeftspartner g);
     
 }

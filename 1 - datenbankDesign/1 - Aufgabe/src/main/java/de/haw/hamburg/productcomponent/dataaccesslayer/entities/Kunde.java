@@ -12,8 +12,6 @@ public class Kunde {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long kundennummer;
-//    @OneToOne
-//    @JoinTable(name = "GESCHAEFTSPARTNER", joinColumns = @JoinColumn(name = "Geschaeftspartnernummer"))
     private long geschaeftspartnernummer;
     private String vorname;
     private String nachname;

@@ -1,6 +1,8 @@
 package de.haw.hamburg.productcomponent.accesslayer.view;
 
+import de.haw.hamburg.productcomponent.accesslayer.controller.GeschaeftspartnerController;
 import de.haw.hamburg.productcomponent.accesslayer.model.Geschaeftspartner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,15 +16,16 @@ import java.util.List;
 public class MainFrame extends javax.swing.JFrame {
 
     private final String titel = "Geschaeftspartner DB";
-    private final IFrameController controller;
+    private IFrameController controller;
+    @Autowired
+    private GeschaeftspartnerController geschaeftspartnerController;
     
     /**
      * Creates new form MainFrame
-     * @param controler
      */
-    public MainFrame(IFrameController controler) {
+    public MainFrame() {
+//        this.controller = geschaeftspartnerController;
         initComponents();
-        this.controller = controler;
         setTitle(titel);
         showLoginView();
     }
@@ -426,6 +429,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        this.controller = geschaeftspartnerController;
         boolean isLoginValid = controller.login(usernameField.getText(), new String(passwordField.getPassword()));
         if(isLoginValid){
             switchView();

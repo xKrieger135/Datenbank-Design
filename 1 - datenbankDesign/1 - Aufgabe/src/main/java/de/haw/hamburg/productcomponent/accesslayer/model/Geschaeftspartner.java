@@ -55,11 +55,11 @@ public abstract class Geschaeftspartner {
 
     @Override
     public String toString() {
-        return " [0] "+geschaeftspartnerNummer+"\t[1] "+strasse+"\t[2] "+nummer+"\t[3] "+ort+"\t[4] "+plz+"\t[5] email";
+        return " [0] " + geschaeftspartnerNummer + "\t [1] " + strasse + "\t [2] " + nummer + "\t [3] " + ort + "\t [4] "+plz+"\t [5]" + iban + "\t [6]" + email;
     }
     
     public static String getToStringDescription(){
-        return "| ID \t| strasse\t| nummber\t| ort\t| plz\t| email\t|";
+        return "|    ID \t    |    strasse\t    |    nummber\t    |    ort\t    |    plz\t    |    iban\t    |    email\t    |";
     }
 
     public void setGeschaeftspartnerNummer(Number geschaeftspartnerNummer) {
