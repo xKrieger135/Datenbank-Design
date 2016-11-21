@@ -23,7 +23,7 @@ public class GeschaeftspartnerController {
 
     @RequestMapping(value = "/gp/{kundenNummer}", method = RequestMethod.GET, produces = "application/json")
     public Kunde findGeschaeftspartnerByKundenNummer(@PathVariable long kundenNummer) {
-        Kunde kunde = kundenRepository.findByKundenNummer(kundenNummer);
+        Kunde kunde = kundenRepository.findByKundennummer(kundenNummer);
         return kunde;
     }
 }

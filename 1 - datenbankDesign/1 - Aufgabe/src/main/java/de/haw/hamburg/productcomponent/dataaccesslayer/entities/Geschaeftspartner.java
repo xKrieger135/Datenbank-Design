@@ -10,28 +10,27 @@ import javax.persistence.*;
 @Table(name = "Geschaeftspartner")
 //@DiscriminatorColumn(name = "geschaeftspartnernummer")
 //@Inheritance
-public abstract class Geschaeftspartner {
+public class Geschaeftspartner {
 
     @Id
-//    @Column(name = "GESCHAEFTSPARTNERNUMMER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long geschaeftspartnerNummer;
+    private long geschaeftspartnernummer;
     private String strasse;
     private String nummer;
     private int plz;
     private String iban;
-    private String eMail;
+    private String email;
 
     public Geschaeftspartner() {
 
     }
 
-    public long getKundenNummer() {
-        return geschaeftspartnerNummer;
+    public long getGeschaeftspartnernummer() {
+        return geschaeftspartnernummer;
     }
 
-    public void setKundenNummer(long kundenNummer) {
-        this.geschaeftspartnerNummer = kundenNummer;
+    public void setGeschaeftspartnernummer(long geschaeftspartnernummer) {
+        this.geschaeftspartnernummer = geschaeftspartnernummer;
     }
 
     public String getStrasse() {
@@ -66,11 +65,11 @@ public abstract class Geschaeftspartner {
         this.iban = iban;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getemail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setemail(String email) {
+        this.email = email;
     }
 }

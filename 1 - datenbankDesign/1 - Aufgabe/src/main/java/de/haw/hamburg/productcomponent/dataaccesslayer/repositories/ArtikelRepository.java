@@ -12,6 +12,6 @@ public interface ArtikelRepository extends CrudRepository<Artikel, Long> {
      * @param artikelNummer This is the given ID for which the related article should be found.
      * @return Returns an artikel.
      */
-    Artikel findByArtikelNummer(long artikelNummer);
+    Artikel findByArtikelnummer(long artikelNummer);
 
 }

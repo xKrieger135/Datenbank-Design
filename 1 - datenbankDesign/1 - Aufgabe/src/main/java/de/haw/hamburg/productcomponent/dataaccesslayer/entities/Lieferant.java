@@ -19,11 +19,11 @@
 //
 //    }
 //
-//    public long getKundenNummer() {
+//    public long getKundennummer() {
 //        return geschaeftspartnerNummer;
 //    }
 //
-//    public void setKundenNummer(long geschaeftspartnerNummer) {
+//    public void setKundennummer(long geschaeftspartnerNummer) {
 //        this.geschaeftspartnerNummer = geschaeftspartnerNummer;
 //    }
 //

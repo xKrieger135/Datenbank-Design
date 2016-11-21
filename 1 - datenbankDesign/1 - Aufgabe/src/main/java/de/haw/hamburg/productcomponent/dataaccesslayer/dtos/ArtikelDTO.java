@@ -35,7 +35,7 @@ public class ArtikelDTO {
 
     public Artikel convertToArtikelEntity() {
         Artikel artikel = new Artikel();
-        artikel.setArtikelName(artikelName);
+        artikel.setArtikelname(artikelName);
         artikel.setBeschreibung(beschreibung);
         artikel.setTyp(typ);
         artikel.setPreis(preis);

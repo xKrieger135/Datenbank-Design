@@ -9,7 +9,12 @@ import javax.persistence.*;
 @Table(name = "Kunde")
 public class Kunde {
 
-    private long kundenNummer;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long kundennummer;
+//    @OneToOne
+//    @JoinTable(name = "GESCHAEFTSPARTNER", joinColumns = @JoinColumn(name = "Geschaeftspartnernummer"))
+    private long geschaeftspartnernummer;
     private String vorname;
     private String nachname;
 
@@ -18,12 +23,20 @@ public class Kunde {
 
     }
 
-    public long getKundenNummer() {
-        return kundenNummer;
+    public long getGeschaeftspartnernummer() {
+        return geschaeftspartnernummer;
     }
 
-    public void setKundenNummer(long kundenNummer) {
-        this.kundenNummer = kundenNummer;
+    public void setGeschaeftspartnernummer(long geschaeftspartnernummer) {
+        this.geschaeftspartnernummer = geschaeftspartnernummer;
+    }
+
+    public long getKundennummer() {
+        return kundennummer;
+    }
+
+    public void setKundennummer(long kundennummer) {
+        this.kundennummer = kundennummer;
     }
 
     public String getVorname() {

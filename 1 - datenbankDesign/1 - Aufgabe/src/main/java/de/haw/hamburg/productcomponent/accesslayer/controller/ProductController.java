@@ -39,7 +39,7 @@ public class ProductController {
     @RequestMapping(value = "/product/{artikelNumber}", method = RequestMethod.GET, produces = "application/json")
     public ArtikelDTO getArtikelByArtikelnumber(@PathVariable long artikelNumber) {
         ArtikelDTO artikelDTO = null;
-        artikelDTO = artikelRepository.findByArtikelNummer(artikelNumber).convertToArtikelDTO();
+        artikelDTO = artikelRepository.findByArtikelnummer(artikelNumber).convertToArtikelDTO();
 
         return artikelDTO;
     }

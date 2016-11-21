@@ -2,10 +2,10 @@
 spring:
   datasource:
     url: jdbc:oracle:thin:@ora14.informatik.haw-hamburg.de:1521:inf14
-    username:
+    username: 
     password:
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     database-platform: org.hibernate.dialect.Oracle10gDialect

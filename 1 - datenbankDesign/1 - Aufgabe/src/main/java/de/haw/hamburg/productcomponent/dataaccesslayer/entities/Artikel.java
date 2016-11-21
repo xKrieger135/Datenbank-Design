@@ -15,10 +15,9 @@ import javax.persistence.*;
 public class Artikel {
 
     @Id
-    @Column(name = "ARTIKELNUMMER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long artikelNummer;
-    private String artikelName;
+    private long artikelnummer;
+    private String artikelname;
     private int typ;
     private int bestand;
     private float preis;
@@ -30,20 +29,20 @@ public class Artikel {
 
     }
 
-    public long getArtikelNummer() {
-        return artikelNummer;
+    public long getArtikelnummer() {
+        return artikelnummer;
     }
 
-    public void setArtikelNummer(long artikelNummer) {
-        this.artikelNummer = artikelNummer;
+    public void setArtikelnummer(long artikelnummer) {
+        this.artikelnummer = artikelnummer;
     }
 
-    public String getArtikelName() {
-        return artikelName;
+    public String getArtikelname() {
+        return artikelname;
     }
 
-    public void setArtikelName(String artikelName) {
-        this.artikelName = artikelName;
+    public void setArtikelname(String artikelname) {
+        this.artikelname = artikelname;
     }
 
     public int getTyp() {
@@ -95,7 +94,7 @@ public class Artikel {
     }
 
     public ArtikelDTO convertToArtikelDTO() {
-        return new ArtikelDTO(artikelName, typ, bestand, preis, kategorie, bildURL, beschreibung);
+        return new ArtikelDTO(artikelname, typ, bestand, preis, kategorie, bildURL, beschreibung);
     }
 
     @Override
@@ -105,11 +104,11 @@ public class Artikel {
 
         Artikel artikel = (Artikel) o;
 
-        if (artikelNummer != artikel.artikelNummer) return false;
+        if (artikelnummer != artikel.artikelnummer) return false;
         if (getTyp() != artikel.getTyp()) return false;
         if (getBestand() != artikel.getBestand()) return false;
         if (Float.compare(artikel.getPreis(), getPreis()) != 0) return false;
-        if (!getArtikelName().equals(artikel.getArtikelName())) return false;
+        if (!getArtikelname().equals(artikel.getArtikelname())) return false;
         if (getKategorie() != null ? !getKategorie().equals(artikel.getKategorie()) : artikel.getKategorie() != null)
             return false;
         if (getBildURL() != null ? !getBildURL().equals(artikel.getBildURL()) : artikel.getBildURL() != null)
@@ -120,8 +119,8 @@ public class Artikel {
 
     @Override
     public int hashCode() {
-        int result = (int) (artikelNummer ^ (artikelNummer >>> 32));
-        result = 31 * result + getArtikelName().hashCode();
+        int result = (int) (artikelnummer ^ (artikelnummer >>> 32));
+        result = 31 * result + getArtikelname().hashCode();
         result = 31 * result + getTyp();
         result = 31 * result + getBestand();
         result = 31 * result + (getPreis() != +0.0f ? Float.floatToIntBits(getPreis()) : 0);
@@ -134,8 +133,8 @@ public class Artikel {
     @Override
     public String toString() {
         return "Artikel{" +
-                "artikelNummer=" + artikelNummer +
-                ", artikelName='" + artikelName + '\'' +
+                "artikelnummer=" + artikelnummer +
+                ", artikelname='" + artikelname + '\'' +
                 ", typ=" + typ +
                 ", bestand=" + bestand +
                 ", preis=" + preis +

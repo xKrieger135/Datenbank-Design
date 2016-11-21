@@ -12,5 +12,5 @@ import javax.transaction.Transactional;
 //@Transactional
 public interface GeschaeftspartnerRepository extends CrudRepository<Geschaeftspartner, Long> {
 
-    Geschaeftspartner findByGeschaeftspartnerNummer(long geschaeftspartnerNummer);
+    Geschaeftspartner findByGeschaeftspartnernummer(long geschaeftspartnernummer);
 }

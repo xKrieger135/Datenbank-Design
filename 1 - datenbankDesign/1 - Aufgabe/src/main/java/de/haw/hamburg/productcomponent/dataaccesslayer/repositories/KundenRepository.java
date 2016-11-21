@@ -10,8 +10,8 @@ import javax.transaction.Transactional;
  * On 12.Okt.2016
  */
 //@Transactional
-public interface KundenRepository { //extends CrudRepository<Kunde, Long> {
+public interface KundenRepository extends CrudRepository<Kunde, Long> {
 
-    Kunde findByKundenNummer(long kundenNummer);
+    Kunde findByKundennummer(long kundennummer);
 
 }
