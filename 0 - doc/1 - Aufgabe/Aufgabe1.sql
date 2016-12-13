@@ -28,9 +28,9 @@ CREATE TABLE Bestellung (
   Datum             DATE NOT NULL,
   Preis             FLOAT NOT NULL,
   Rechnungsadresse  VARCHAR2(255),
-  Lieferadresse     VARCHAR2(255) NOT NULL,
+  Lieferadresse     VARCHAR2(255) NOT NULL
 
-  FOREIGN KEY(Kundennummer) REFERENCES Kunde(Kundennummer)
+--  FOREIGN KEY(Kundennummer) REFERENCES Kunde(Kundennummer)
 );
 
 CREATE TABLE Artikel (

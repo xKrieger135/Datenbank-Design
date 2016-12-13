@@ -34,8 +34,8 @@ VALUES('Josie', 'Maren', 'ICE', '1', 'HH', 22213);
 INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
 VALUES('Tina', 'Torina', 'Matadorenstraﬂe', '1', 'HH', 22213);
 
-INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
-VALUES('Peter', 'Pan', 'Platinen-allee', '1', 'HH', 22213);
+--INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
+--VALUES('Peter', 'Pan', 'Platinen-allee', '1', 'HH', 22213);
 
 INSERT INTO KUNDE(Vorname, Nachname, Adresse, Hausnummer, Stadt, PLZ)
 VALUES('Anna', 'Christiansen', 'CPU-Kernel-Weg', '1', 'HH', 22213);
