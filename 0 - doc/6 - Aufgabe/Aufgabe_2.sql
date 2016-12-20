@@ -1,3 +1,5 @@
+DROP TABLE FILIALEN CASCADE CONSTRAINTS;
+
 CREATE TABLE FILIALEN
 (
   FILIALEN_NAME VARCHAR2(255) NOT NULL,
@@ -9,39 +11,7 @@ CREATE TABLE FILIALEN
 );
 
 
--- INSERT FILIALEN --
-INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
-(
-'IKEA Moebel & Einrichtungshaus Hamburg-Altona',
-'Große Bergstraße',
-'164',
-22767,
-'HAMBURG',
-SDO_GEOMETRY(2001, 8307, 
-     SDO_POINT_TYPE (53.551306, 9.941490,NULL),NULL,NULL)
-);
-
-INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
-(
-'Bauhaus Hannover',
-' Schulenburger Landstraße',
-'125',
-30165,
-'Hannover-Hainholz',
-SDO_GEOMETRY(2001, 8307, 
-     SDO_POINT_TYPE (52.409659, 9.705166,NULL),NULL,NULL)
-);
-
-INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
-(
-'Mediamarkt Lueneburg',
-'Lüner Rennbahn',
-'4',
-21339,
-'Lüneburg',
-SDO_GEOMETRY(2001, 8307, 
-     SDO_POINT_TYPE (53.272626, 10.426123,NULL),NULL,NULL)
-);
+DELETE FROM USER_SDO_GEOM_METADATA WHERE TABLE_NAME='FILIALEN' AND COLUMN_NAME='GEO_LOKATION';
 
 -- Add metadata to spatial VIEW USER_SDO_GEOM_METADATA --
 INSERT INTO USER_SDO_GEOM_METADATA (TABLE_NAME, COLUMN_NAME, DIMINFO, SRID) 
@@ -75,29 +45,51 @@ ORA-06512: in "MDSYS.SDO_INDEX_METHOD_10I", Zeile 10
 
 */
 
+
+-- INSERT FILIALEN --
+INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
+(
+'IKEA Moebel  Einrichtungshaus Hamburg-Altona',
+'Große Bergstraße',
+'164',
+22767,
+'HAMBURG',
+SDO_GEOMETRY(2001, 4055, 
+     SDO_POINT_TYPE (53.551306, 9.941490,NULL),NULL,NULL)
+);
+
+INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
+(
+'Bauhaus Hannover',
+' Schulenburger Landstraße',
+'125',
+30165,
+'Hannover-Hainholz',
+SDO_GEOMETRY(2001, 4055, 
+     SDO_POINT_TYPE (52.409659, 9.705166,NULL),NULL,NULL)
+);
+
+INSERT INTO FILIALEN (FILIALEN_NAME,STRASSE,NUMMER,PLZ,ORT,GEO_LOKATION) VALUES 
+(
+'Mediamarkt Lueneburg',
+'Lüner Rennbahn',
+'4',
+21339,
+'Lüneburg',
+SDO_GEOMETRY(2001, 4055, 
+     SDO_POINT_TYPE (53.272626, 10.426123,NULL),NULL,NULL)
+);
+
+commit;
+
 -- Find the 3 closest customers to store_id = 101, and
 -- order the results by distance.
  
-SELECT /*+ordered index(c customers_sidx) */
-   g.GESCHAEFTSPARTNERNUMMER,
-   g.PLZ,
-   g.EMAIL,
-   sdo_nn_distance (1) distance
+SELECT
+   (SELECT k.VORNAME FROM KUNDE k WHERE k.GESCHAEFTSPARTNERNUMMER = g.GESCHAEFTSPARTNERNUMMER) AS VORNAME,
+   f.FILIALEN_NAME,
+   f.ORT,
+   sdo_nn_distance(1) as distance_in_KM
 FROM FILIALEN f, 
    GESCHAEFTSPARTNER g
-WHERE f.ORT = 'HAMBURG'
-AND sdo_nn 
-  (g.ORT, f.GEO_LOKATION, 'sdo_num_res=3', 1) = 'TRUE'
-ORDER BY distance;
-
-/* Kommt immer der Fehler, weil der Index im voherigen Befehl nicht richtig angelegt wurde :(
-ORA-13249: SDO_NN cannot be evaluated without using index
-ORA-06512: in "MDSYS.MD", Zeile 1723
-ORA-06512: in "MDSYS.MDERR", Zeile 17
-ORA-06512: in "MDSYS.PRVT_IDX", Zeile 9
-13249. 00000 -  "%s"
-*Cause:    An internal error was encountered in the extensible spatial index
-           component. The text of the message is obtained from some
-           other server component.
-*Action:   Contact Oracle Support Services with the exact error text.
-*/
+WHERE sdo_nn(f.GEO_LOKATION, g.ORT, 'sdo_num_res=3 unit=KM',1) = 'TRUE' ORDER BY distance_in_KM;
